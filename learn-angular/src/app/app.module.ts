@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyCalculatorComponent } from './my-calculator/my-calculator.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MyCalculatorModule} from "./my-calculator/my-calculator.module";
 
 @NgModule({
-  declarations: [AppComponent, MyCalculatorComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, MyCalculatorModule],
   providers: [],
   bootstrap: [AppComponent],
 })
