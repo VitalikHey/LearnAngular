@@ -1,11 +1,63 @@
 <div class="calculator">
-  <input [(ngModel)]="firstNumber" type="number" class="calculator__number" />
-  <select [(ngModel)]="operation">
-    <option value="{{ operation }}" *ngFor="let operation of arrayOperations">
-      {{ operation }}
-    </option>
-  </select>
-  <input [(ngModel)]="secondNumber" type="number" class="calculator__number" />
-  <button (click)="calculate()">Вычислить</button>
-  <span>{{ result ? result : "Нажмите на кнопку вычислить" }}</span>
+  <h2>Калькулятор</h2>
+  <ng-container *ngFor="let group of calcGroups; let i = index">
+    <div class="calculator__container">
+      <select [(ngModel)]="group.firstNum.modified">
+        <option
+          [value]="modified.value"
+          *ngFor="let modified of calcModified | keyvalue"
+        >
+          {{ modified.value }}
+        </option>
+      </select>
+      <input
+        [(ngModel)]="group.firstNum.value"
+        type="number"
+        class="calculator__number"
+      />
+      <select [(ngModel)]="group.operation">
+        <option
+          value="{{ operation.value }}"
+          *ngFor="let operation of calcOperations | keyvalue"
+        >
+          {{ operation.value }}
+        </option>
+      </select>
+      <select [(ngModel)]="group.secondNum.modified">
+        <option
+          [value]="modified.value"
+          *ngFor="let modified of calcModified | keyvalue"
+        >
+          {{ modified.value }}
+        </option>
+      </select>
+      <input
+        [(ngModel)]="group.secondNum.value"
+        type="number"
+        class="calculator__number"
+      />
+        <button (click)="deleteGroup(i)" *ngIf="i!==0">Удалить группу</button>
+    </div>
+    <select
+      class="calculator__select"
+      [(ngModel)]="operationsBetweenGroups[i]"
+      *ngIf="operationsBetweenGroups.length > i"
+    >
+      <option
+        [value]="operation.value"
+        *ngFor="let operation of calcOperations | keyvalue"
+      >
+        {{ operation.value }}
+      </option>
+    </select>
+  </ng-container>
+  <div class="calculate_history">
+    <span>История операций:</span>
+    <div *ngFor="let obj of history; let i = index">{{ obj }}</div>
+  </div>
+  <span>{{ result ? "Ответ: " + result : "Нажмите на кнопку вычислить" }}</span>
+  <div>
+    <button (click)="calcGroup()">Вычислить</button>
+    <button (click)="addGroup()">Добавить группу</button>
+  </div>
 </div>
