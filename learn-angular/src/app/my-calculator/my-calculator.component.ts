@@ -16,6 +16,7 @@ enum CalcOperations {
   minus = '-',
   multiply = '*',
   divide = '/',
+  none = '',
 }
 
 enum CalcModified {
@@ -71,32 +72,45 @@ export class MyCalculatorComponent {
   public deleteGroup(index: number): void {
     this.calcGroups.splice(index, 1);
   }
-  public calcGroup() {
-    let result: number = 0
-    let tempHistory: string[] = []
+  public calcGroup(): void {
+    let result: number = 0;
+    let tempHistory: string[] = [];
 
-    this.calcGroups.forEach((group:CalculateGroup,i:number):void => {
+    this.calcGroups.forEach((group: CalculateGroup, i: number): void => {
       if (i === 0) {
-        result = this.calculate(this.calcValueWithModified(group.firstNum), this.calcValueWithModified(group.secondNum), group.operation)
+        result = this.calculate(
+          this.calcValueWithModified(group.firstNum),
+          this.calcValueWithModified(group.secondNum),
+          group.operation,
+        );
       } else {
-        let tempResult: number = this.calculate(this.calcValueWithModified(group.firstNum), this.calcValueWithModified(group.secondNum), group.operation)
-        result = this.calculate(result, tempResult, this.operationsBetweenGroups[i - 1])
+        let tempResult: number = this.calculate(
+          this.calcValueWithModified(group.firstNum),
+          this.calcValueWithModified(group.secondNum),
+          group.operation,
+        );
+        result = this.calculate(
+          result,
+          tempResult,
+          this.operationsBetweenGroups[i - 1],
+        );
         tempHistory.push(this.operationsBetweenGroups[i - 1]);
       }
       tempHistory.push(
         `
           (
-          ${group.firstNum.modified != CalcModified.none ? group.firstNum.modified: ''} ${group.firstNum.value}
+          ${group.firstNum.modified != CalcModified.none ? group.firstNum.modified : ''} ${group.firstNum.value}
           ${group.operation}
-          ${group.secondNum.modified != CalcModified.none ? group.secondNum.modified: ''} ${group.secondNum.value}
+          ${group.secondNum.modified != CalcModified.none ? group.secondNum.modified : ''} ${group.secondNum.value}
           )
-          `)
-    })
+          `,
+      );
+    });
 
-    tempHistory.push(`= ${result}`)
-    this.history.push(tempHistory.join(' '))
+    tempHistory.push(`= ${result}`);
+    this.history.push(tempHistory.join(' '));
 
-    this.result = result
+    this.result = result;
   }
   public calcValueWithModified(value: CalculateNum): number {
     switch (value.modified) {
@@ -114,7 +128,11 @@ export class MyCalculatorComponent {
         return Math.log(value.value);
     }
   }
-  calculate(firstNum: number, secondNum: number, operation: CalcOperations): number {
+  calculate(
+    firstNum: number,
+    secondNum: number,
+    operation: CalcOperations,
+  ): number {
     switch (operation) {
       case CalcOperations.plus:
         return firstNum + secondNum;
@@ -124,6 +142,9 @@ export class MyCalculatorComponent {
         return firstNum * secondNum;
       case CalcOperations.divide:
         return firstNum / secondNum;
+      case CalcOperations.none:
+        alert('Выберете операцию!');
+        return 1;
     }
   }
 }

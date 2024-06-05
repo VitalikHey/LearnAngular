@@ -1,8 +1,8 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {MyCalculatorComponent} from "./my-calculator.component";
-import {FormsModule} from "@angular/forms";
-import {BrowserModule} from "@angular/platform-browser";
+import { MyCalculatorComponent } from './my-calculator.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [FormsModule, BrowserModule],
@@ -10,5 +10,4 @@ import {BrowserModule} from "@angular/platform-browser";
   declarations: [MyCalculatorComponent],
   providers: [],
 })
-export class MyCalculatorModule {
-}
+export class MyCalculatorModule {}
