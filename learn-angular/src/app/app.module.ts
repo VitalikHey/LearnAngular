@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyCalculatorModule } from './my-calculator/my-calculator.module';
 import { MyNavigation } from './components/navigation/navigation.component';
-import { MyEmptyPage} from "./components/empty-rout/empty.rout.component";
+import { MyEmptyPage } from './components/empty-rout/empty.rout.component';
 
 @NgModule({
   declarations: [AppComponent, MyNavigation, MyEmptyPage],

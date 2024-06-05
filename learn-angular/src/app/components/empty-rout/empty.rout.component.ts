@@ -1,10 +1,8 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'empty-page',
   templateUrl: './empty.rout.component.html',
-  styleUrls: ['./empty.route.component.scss']
+  styleUrls: ['./empty.route.component.scss'],
 })
-
-export class MyEmptyPage  {
-}
+export class MyEmptyPage {}
