@@ -1,0 +1,31 @@
+.object-list__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Bookman Old Style", serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.object-list {
+  margin-top: 20px;
+}
+
+.object {
+  border: #161616 4px;
+  padding: 4px 4px 4px 4px;
+  font-family: "JetBrains Mono", monospace;
+  width: 100px;
+}
+
+.object-list__button {
+  border: none;
+  background-color: #3636ff;
+  color: white;
+  font-family: "JetBrains Mono", monospace;
+  border-radius: 6px;
+  font-weight: 500;
+  height: 30px;
+  width: 70px;
+  padding: 2px 2px 2px 2px;
+}

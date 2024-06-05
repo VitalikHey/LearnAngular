@@ -1,0 +1,9 @@
+<span class="object-list__title">Список Объектов</span>
+<div class="object-list">
+  <div class="object" *ngFor="let object of myObjects">
+    {{ object.title }}
+    <button (click)="viewContent(object)" class="object-list__button">
+      Контент
+    </button>
+  </div>
+</div>
