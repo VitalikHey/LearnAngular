@@ -1,7 +1,6 @@
-<button (click)="increment()">Увеличить на 1</button>
+<button (click)="incrementOrDecrement('+')" name="increment">Увеличить на 1</button>
 <input
   [(ngModel)]="counter"
-  [value]="counter"
   type="text"
 />
-<button (click)="decrement()">Уменьшить на 1</button>
+<button (click)="incrementOrDecrement('-')">Уменьшить на 1</button>
