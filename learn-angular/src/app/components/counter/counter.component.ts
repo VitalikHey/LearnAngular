@@ -7,11 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CounterComponent {
   protected counter: number = 0
-  protected incrementOrDecrement(operation: string): void {
-    if(operation === '+') {
-      this.counter += 1
-    } else {
-      this.counter -= 1
-    }
+  protected incrementOrDecrement(increment: boolean): void {
+    this.counter += increment ? 1 : -1
   }
 }
