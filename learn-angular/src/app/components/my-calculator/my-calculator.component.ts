@@ -54,6 +54,8 @@ export class MyCalculatorComponent {
 
   public operationsBetweenGroups: Array<CalcOperations> = [];
 
+  public arrayColor: Array<string> = ['blue', 'green', 'reed', 'black'];
+
   public result?: number;
 
   public addGroup(): void {

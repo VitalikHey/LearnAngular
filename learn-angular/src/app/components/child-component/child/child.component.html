@@ -1,0 +1,24 @@
+<h2>{{title}}</h2>
+
+<div class="register-form" [formGroup]="myForm">
+  <label class="label-login" for="login">Логин</label>
+  <input
+    type="text"
+    id="login"
+    formControlName="login"
+  />
+  <label class="label-email" for="email">Почта</label>
+  <input
+    type="text"
+    id="email"
+    formControlName="email"
+  />
+  <label class="label-number" for="number">Номер телефона</label>
+  <input
+    type="text"
+    id="number"
+    formControlName="number"
+  />
+  <span style="color: red" *ngIf="!this.myForm.valid && this.myForm.value">Ошибка валидации формы</span>
+  <button (click)="handleClickForm()">Отправить данные формы</button>
+</div>

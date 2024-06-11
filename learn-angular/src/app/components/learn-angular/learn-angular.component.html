@@ -1,0 +1,10 @@
+<h1>Тут начинается обучение непонятных моментов ангуляра</h1>
+
+<div>
+  <ul>
+    <ng-container *ngFor="let item of items">
+      <li *ngIf="itemValid(item)">{{ item }}</li>
+      <span>1</span>
+    </ng-container>
+  </ul>
+</div>
